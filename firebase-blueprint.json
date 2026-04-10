@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "A user's dumbass score submission for the leaderboard.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who submitted the score."
+        },
+        "username": {
+          "type": "string",
+          "description": "The display name of the user."
+        },
+        "percentage": {
+          "type": "number",
+          "description": "The dumbass percentage (12-99)."
+        },
+        "badge": {
+          "type": "string",
+          "description": "The badge awarded to the user."
+        },
+        "description": {
+          "type": "string",
+          "description": "The daily description that resulted in this score."
+        },
+        "createdAt": {
+          "type": "timestamp",
+          "description": "When the entry was created."
+        }
+      },
+      "required": ["userId", "username", "percentage", "badge", "description", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{entryId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderboardEntry"
+      },
+      "description": "Global leaderboard of dumbass scores."
+    }
+  }
+}
